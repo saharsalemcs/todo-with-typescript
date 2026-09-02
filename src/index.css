@@ -4,4 +4,11 @@
 
 @theme {
   --font-neucha: "Neucha", cursive;
+  --background-image-paper: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+}
+
+.icon {
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 25px;
 }

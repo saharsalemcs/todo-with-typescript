@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InputField from "./components/InputField";
 import type { Todo } from "./model";
+import TodoList from "./components/TodoList";
 
 export default function App() {
   const [todo, setTodo] = useState<string>("");
@@ -15,13 +16,13 @@ export default function App() {
       setTodo("");
     }
   }
-  console.log(todos);
   return (
     <div className="h-screen bg-[#2f74c0] font-neucha flex items-center flex-col">
       <h1 className="uppercase text-white my-8 text-5xl text-center z-1">
         Taskify
       </h1>
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
 }

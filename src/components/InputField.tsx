@@ -10,7 +10,7 @@ export default function InputField({ todo, setTodo, handleAdd }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <form
-      className="flex items-center relative w-[80%]"
+      className="flex items-center relative w-[95%] sm:w-[80%]"
       onSubmit={(e) => {
         handleAdd(e);
         inputRef.current?.blur();
