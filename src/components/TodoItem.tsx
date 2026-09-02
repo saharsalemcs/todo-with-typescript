@@ -10,6 +10,9 @@ export default function TodoItem({ todo, todos, setTodos }: TodoItemProps) {
       ),
     );
   }
+  function handleDelete(id: number) {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  }
   return (
     <form className="flex p-4 mt-3 sm:w-[40%] w-full rounded-md bg-paper">
       <span
@@ -22,7 +25,7 @@ export default function TodoItem({ todo, todos, setTodos }: TodoItemProps) {
         <span>
           <AiFillEdit />
         </span>
-        <span>
+        <span onClick={() => handleDelete(todo.id)}>
           <AiFillDelete />
         </span>
         <span onClick={() => handleDone(todo.id)}>
