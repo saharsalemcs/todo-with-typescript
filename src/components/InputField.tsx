@@ -1,13 +1,20 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useTodoStore } from "../store/useTodoStore";
 
-interface Props {
-  todo: string;
-  setTodo: React.Dispatch<React.SetStateAction<string>>;
-  handleAdd: (e: React.FormEvent) => void;
-}
+export default function InputField() {
+  const [text, setText] = useState<string>("");
+  const addTodo = useTodoStore((state) => state.addTodo);
 
-export default function InputField({ todo, setTodo, handleAdd }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (text.trim() === "") return;
+    addTodo(text);
+    setText("");
+  };
+
   return (
     <form
       className="flex items-center relative w-[95%] sm:w-[80%]"
@@ -19,8 +26,8 @@ export default function InputField({ todo, setTodo, handleAdd }: Props) {
       <input
         type="text"
         ref={inputRef}
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
         className="w-full bg-white border-none outline-none rounded-full text-xl px-6 py-4  duration-150 shadow-sm focus:shadow-[0_0_10px_1000px_rgb(0,0,0,0.5)]"
         placeholder="Add a task..."
       />
